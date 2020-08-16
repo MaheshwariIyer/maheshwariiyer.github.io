@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script type="text/javascript" src="scripts/lib/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="scripts/lib/fastclick.js"></script>
+	<!-- <script src="scripts/lib/ScrollMagic.js"></script> -->
+	<script src="scripts/lib/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="scripts/index.js"></script>
+	<title>ChinaTown</title>
+</head>
+<body>
+
+<div id="myNav" class="overlay">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	<div class="overlayContent">
+		<a href="#">About</a>
+		<a href="#">Services</a>
+		<a href="#">Clients</a>
+		<a href="#">Contact</a>
+	</div>
+</div>
+
+<div id="vidOverlay" class="overlay">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeVid()">&times;</a>
+	<div id="vidAnimatic" class="overlayContent">
+		<video controls>
+			<source src="media/temp.mp4" type="video/mp4">
+		</video>
+	</div>
+</div>
+
+	<div id="flexContainer">
+
+		<header id="header" class="pages">
+			<div class="tempUnhide">show</div>
+			<div class="btn">Begin Journey</div>
+			<p>At the event?</p>
+		</header>
+
+		<section id="about" class="pages">
+			<!-- <img class="img1" src="https://via.placeholder.com/1280x720.png?text=Placeholder+Image" alt="imgTemp"> -->
+			<img class="img1" src="media/china-01.jpg" alt="china-01">
+			<!-- <div class="gradient1"></div> -->
+			<div class="cont1">
+				<h2>ABOUT</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste fuga dignissimos voluptatibus repellat tenetur laudantium voluptate, asperiores possimus, veritatis maxime eos, aut culpa nemo inventore labore nostrum cum itaque temporibus.</p>
+			</div>
+		</section>
+
+		<section id="promoVid" class="pages">
+			<div class="cont2">
+				<h2>PROMOTIONAL MATERIAL</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste fuga dignissimos voluptatibus repellat tenetur laudantium voluptate, asperiores possimus, veritatis maxime eos, aut culpa nemo inventore labore nostrum cum itaque temporibus.</p>
+			</div>
+			<!-- <img class="img2" src="https://via.placeholder.com/1280x720.png?text=Placeholder+Image" alt="imgTemp"> -->
+			<img class="img2" src="media/china-02.jpg" alt="china-02">
+		</section>
+
+		<section id="desProc" class="pages">
+			<!-- <img class="img3" src="https://via.placeholder.com/1280x720.png?text=Placeholder+Image" alt="imgTemp"> -->
+			<img class="img3" src="media/china-03.jpg" alt="china-03">
+			<div class="cont3">
+				<h2>DESIGN PROCESS</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste fuga dignissimos voluptatibus repellat tenetur laudantium voluptate, asperiores possimus, veritatis maxime eos, aut culpa nemo inventore labore nostrum cum itaque temporibus.</p>
+			</div>
+			<!-- <div class="gradient1"></div> -->
+		</section>
+	</div>
+
+		<div id="mainJourney" class="pages">
+			<div id="mapCont">
+				<img id="map" src="media/map.png" alt="imgTemp">
+					<div id="landmark1" class="iconLandmark" onclick="openVid0();"></div>
+					<div id="landmark2" class="iconLandmark" onclick="openVid1();"></div>
+					<div id="landmark3" class="iconLandmark" onclick="openVid2();"></div>
+					<div id="landmark4" class="iconLandmark" onclick="openVid3();"></div>
+					<div id="landmark5" class="iconLandmark" onclick="openVid4();"></div>
+			</div>
+			<div id="scrlTrigger" class="cont4">
+				<div id="pin1">
+					<!-- <img id="iconUser" src="media/user3.png" alt="user"> -->
+				</div>
+			</div>
+		</div>
+
+		<!-- <footer id="footer" class="pages">FOOTER</footer> -->
+
+
+</body>
+</html>

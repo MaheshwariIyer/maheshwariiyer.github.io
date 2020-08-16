@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+
+     <meta charset='UTF-8'>
+     <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
+     <meta name='description' content='>
+     <meta name=' keywords' content='>
+     <meta name=' author' content='>
+     <meta name=' viewport' content='width=device-width, initial-scale=1, maximum-scale=1>
+
+     <title>How long till its gone</title>
+
+     <link rel='stylesheet' href='css1/bootstrap.min.css'>
+     <link rel='stylesheet' href='css1/font-awesome.min.css'>
+
+     <!-- Main css -->
+     <link rel='stylesheet' href='css1/style.css'>
+     <link href='https://fonts.googleapis.com/css?family=Work+Sans:300,400,700' rel='stylesheet'>
+     <link rel="stylesheet" href="static/css/my-responsive.css" type="text/css" />
+
+</head>
+
+<style>
+     body {
+          text-align: center;
+          background: black;
+          color: white;
+          font-family: sans-serif;
+          font-weight: 100;
+     }
+
+     h1 {
+          color: white;
+          font-weight: 100;
+          font-size: 40px;
+          margin: 40px 0px 20px;
+     }
+
+     #clockdiv {
+          font-family: sans-serif;
+          color: #fff;
+          display: inline-block;
+          font-weight: 100;
+          text-align: center;
+          font-size: 30px;
+     }
+
+     #clockdiv>div {
+          padding: 10px;
+          border-radius: 3px;
+          background: white;
+          color: black;
+          display: inline-block;
+     }
+
+     #clockdiv div>span {
+          padding: 15px;
+          border-radius: 3px;
+          background: black;
+          color: red;
+          display: inline-block;
+     }
+
+     .smalltext {
+          padding-top: 5px;
+          font-size: 16px;
+     }
+
+     #back-button:hover {
+          cursor: pointer;
+     }
+     @media (max-width: 479.98px){
+          h1 {
+               font-size: 26px;
+               margin: 10px 0px 5px;
+          }
+          #back-button i {
+              font-size: 24px;
+          }
+     }
+     @media (max-width: 375px){
+          #clockdiv {
+               font-size: 20px;
+          }
+          .smalltext {
+               font-size: 12px;
+          }
+          h1 {
+               font-size: 22px;
+               margin: 0px 0px 5px;
+          }
+          #back-button i {
+               font-size: 20px;
+          }
+     }
+</style>
+
+<body>
+
+     <div style="text-align: left;padding: 10px;" id="back-button">
+          <i class="fa fa-arrow-left fa-4x" aria-hidden="true"></i>
+     </div>
+     <h1>Countdown Clock</h1>
+     <div id='clockdiv'>
+          <div>
+               <span class='years'></span>
+               <div class='smalltext'>Years</div>
+          </div>
+          <div>
+               <span class='days'></span>
+               <div class='smalltext'>Days</div>
+          </div>
+          <div>
+               <span class='hours'></span>
+               <div class='smalltext'>Hours</div>
+          </div>
+          <div>
+               <span class='minutes'></span>
+               <div class='smalltext'>Minutes</div>
+          </div>
+          <div>
+               <span class='seconds'></span>
+               <div class='smalltext'>Seconds</div>
+          </div>
+     </div>
+
+
+
+
+
+
+
+
+
+     <!-- SCRIPTS -->
+     <script src='js1/jquery.js'></script>
+     <script src='js1/bootstrap.min.js'></script>
+     <script src='js1/custom.js'></script>
+     <script>
+          document.querySelector('#back-button').addEventListener('click', function () {
+               window.history.back();
+          });
+
+          function getTimeRemaining(endtime) {
+               var t = Date.parse(endtime) - Date.parse(new Date());
+               var seconds = Math.floor((t / 1000) % 60);
+               var minutes = Math.floor((t / 1000 / 60) % 60);
+               var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+               var days = Math.floor((t / (1000 * 60 * 60 * 24)) % 365);
+               var years = Math.floor(t / (1000 * 60 * 60 * 24 * 365));
+               return {
+                    'total': t,
+                    'years': years,
+                    'days': days,
+                    'hours': hours,
+                    'minutes': minutes,
+                    'seconds': seconds
+               };
+          }
+
+          function initializeClock(id, endtime) {
+               var clock = document.getElementById(id);
+               var yearsSpan = clock.querySelector('.years');
+               var daysSpan = clock.querySelector('.days');
+               var hoursSpan = clock.querySelector('.hours');
+               var minutesSpan = clock.querySelector('.minutes');
+               var secondsSpan = clock.querySelector('.seconds');
+
+               function updateClock() {
+                    var t = getTimeRemaining(endtime);
+                    console.log(('0' + t.days))
+
+                    yearsSpan.innerHTML = t.years;
+                    daysSpan.innerHTML = ('0' + t.days).slice(-3);
+                    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                    if (t.total <= 0) {
+                         clearInterval(timeinterval);
+                    }
+               }
+
+               updateClock();
+               var timeinterval = setInterval(updateClock, 1000);
+          }
+
+          var params = (new URL(document.location)).searchParams;
+          var timeSpan = parseInt(params.get('timespan') || 10, 10);
+
+          var deadline = new Date(Date.parse(new Date()) + timeSpan * 365 * 24 * 60 * 60 * 1000);
+          initializeClock('clockdiv', deadline);
+
+
+
+     </script>
+
+</body>
+
+</html>
